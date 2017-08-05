@@ -16,6 +16,7 @@ router.get('/about', function (req, res) {
 })
 
 router.post('/form', function(req, res){
+	console.log(req.body);
 	res.send('form posted');
 })
 
