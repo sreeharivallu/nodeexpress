@@ -2,6 +2,11 @@ var express = require('express')
 var router = express.Router()
 var multer = require('multer');
 
+const adduser = require('../controllers/users/adduser');
+const getuser = require('../controllers/users/getuser');
+const updateuser = require('../controllers/users/updateuser');
+const deleteuser = require('../controllers/users/deleteuser');
+
 /*use this if you want to store file with same filename
   that you are getting. Ideally, it is not safe to store
   files
@@ -34,6 +39,11 @@ router.get('/about', function (req, res) {
 })
 
 //This accepts files as well
+router.post('/adduser', adduser.adduser);
+router.get('/getuser',getuser.getuser);
+router.post('/updateuser',updateuser.updateuser);
+router.post('/deleteuser',deleteuser.deleteuser);
+
 router.post('/form',upload.any(),function(req, res, next){	
 	res.send('form posted');
 })

@@ -2,6 +2,7 @@ var express = require('express');
 var cors = require('cors')
 const routes = require('./routes/routes');
 const bodyParser = require('body-parser');
+const db = require('./db/db');
 //var multer = require('multer');
 
 var app = express();
@@ -18,6 +19,14 @@ app.use(bodyParser.json())
 
 app.use('/boilerplate', routes);
 
-app.listen(3000, function(){
-	console.log("server listening");
-});
+db.connect('', function(err){
+
+	if(err){
+		console.log("failed to connect to database");
+	}else{
+		app.listen(3000, function(){
+		console.log("server listening");
+	});	
+	}
+	
+})
